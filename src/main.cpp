@@ -16,7 +16,7 @@ Adafruit_NeoPixel strip(LED_COUNT, LED_PIN, NEO_GRB + NEO_KHZ800);
 //   NEO_GRB     Pixels are wired for GRB bitstream (most NeoPixel products)
 //   NEO_RGB     Pixels are wired for RGB bitstream (v1 FLORA pixels, not v2)
 //   NEO_RGBW    Pixels are wired for RGBW bitstream (NeoPixel RGBW products)
-int           pixelCycle = 0;           // Pattern Pixel Cycle between colors
+int pixelCycle = 0;           // Pattern Pixel Cycle between colors
 
 // Input a value 0 to 255 to get a color value.
 // The colours are a transition r - g - b - back to r.
@@ -47,6 +47,9 @@ void setup() {
   Serial.begin(115200);
   Serial.println("Start");
 
+  rainbow();
+ 
+  delay(5000);
   strip.begin();           // INITIALIZE NeoPixel strip object (REQUIRED)
   strip.show();            // Turn OFF all pixels ASAP
   strip.setBrightness(25); // Set BRIGHTNESS to about 1/5 (max = 255)
@@ -55,5 +58,7 @@ void setup() {
 void loop() {
   // put your main code here, to run repeatedly:
   rainbow();
-  delay(1);
+  delay(10);
+  if (pixelCycle == 0)
+    Serial.println("Red again");
 }
