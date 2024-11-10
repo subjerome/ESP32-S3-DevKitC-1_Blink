@@ -57,7 +57,7 @@ public:
   uint8_t lastStatus; /*!< status byte after last operation */
 
 private:
-  I2Cdev *i2c_dev = NULL; ///< Pointer to I2C bus interface
+  Adafruit_I2CDevice *i2c_dev = NULL; ///< Pointer to I2C bus interface
   uint32_t readData(void);
 
   int8_t _reset, _eoc;
